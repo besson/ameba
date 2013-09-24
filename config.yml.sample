@@ -1,0 +1,9 @@
+mongo:
+  host:
+  port:
+  database:
+  collection:
+
+term_fields:
+  name:
+  frequency:
