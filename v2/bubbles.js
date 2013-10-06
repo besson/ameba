@@ -1,11 +1,11 @@
-var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = 2000 - margin.left - margin.right,
-    height = 1060 - margin.top - margin.bottom;
+var margin = {top: 0, right: 0, bottom: 0, left: 0},
+    width = 1500 - margin.left - margin.right,
+    height = 960 - margin.top - margin.bottom;
 
 var n = 200,
     m = 100,
     padding = 3,
-    radius = d3.scale.linear().domain([13000,1100000]).range([20,200]),
+    radius = d3.scale.linear().domain([13000,1100000]).range([20,150]),
     color = d3.scale.category20c().domain(d3.range(m));
 
 d3.json("terms.json", function(error, json) {
@@ -71,7 +71,7 @@ function expand(e) {
       e.radius = e.radius * 1.8;
       e.fixed = 1;
       e.class = "selected"
-      d3.select("#search-options").append("p").attr("id", "opt-" + e.label.replace(" ", "")).attr("style", "font: 17px sans-serif;").text(e.label);
+      d3.select("#search-options").append("p").attr("id", "opt-" + e.label.replace(" ", "")).attr("name", e.label).attr("style", "font: 17px sans-serif;").text(e.label);
   }
 }
 
@@ -145,6 +145,16 @@ function collide(alpha) {
     });
   };
 }
+
+  d3.select("#search").on("click", function(e) {
+    var keyWords = "";
+     d3.select("#search-options").selectAll("p").each(function(d,i){
+       keyWords = keyWords + this.innerText + " OR ";
+     });
+
+     keyWords = keyWords.substring(0, keyWords.length - 4);
+     window.location="http://localhost:8984/solr/walmart/select?q=" + keyWords + "&fl=name&wt=json"
+  });
 });
 
 
