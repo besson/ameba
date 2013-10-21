@@ -149,11 +149,13 @@ function collide(alpha) {
   d3.select("#search").on("click", function(e) {
     var keyWords = "";
      d3.select("#search-options").selectAll("p").each(function(d,i){
-       keyWords = keyWords + this.innerText + " OR ";
+       keyWords = keyWords + this.innerText + ",";
      });
 
-     keyWords = keyWords.substring(0, keyWords.length - 4);
-     window.location="http://localhost:8984/solr/walmart/select?q=" + keyWords + "&fl=name&wt=json"
+     keyWords = keyWords.substring(0, keyWords.length - 1);
+     // window.location="http://localhost:8984/solr/walmart/select?q=" + keyWords + "&fl=name&wt=json"
+     $("#keywords").val(keyWords);
+     $("#search-form").submit();
   });
 });
 
