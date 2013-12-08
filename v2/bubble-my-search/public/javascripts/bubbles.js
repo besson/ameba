@@ -153,10 +153,7 @@ function collide(alpha) {
      });
 
      keyWords = keyWords.substring(0, keyWords.length - 1);
-     // window.location="http://localhost:8984/solr/walmart/select?q=" + keyWords + "&fl=name&wt=json"
      $("#keywords").val(keyWords);
      $("#search-form").submit();
   });
 });
-
-
