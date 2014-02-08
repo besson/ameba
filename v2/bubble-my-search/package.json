@@ -9,7 +9,11 @@
     "express": "3.4.2",
     "jade": "*",
     "solr-client": "*",
-    "hashmap": "*", 
-    "async": "*"
+    "hashmap": "*",
+    "async": "*",
+    "request":  "*",
+    "JSONStream": "0.7.1",
+    "event-stream": "3.0.16",
+    "sync": "*"
   }
 }
